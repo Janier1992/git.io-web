@@ -37,8 +37,8 @@
     <!-- Contenedor Principal de la Aplicación -->
     <div class="app-container" id="mainAppContainer">
 
-        <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Minimizar Menú">
-            <i class="fas fa-angle-double-left"></i>
+        <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Abrir Menú">
+            <i class="fas fa-bars"></i> <!-- Icono por defecto para móvil, JS lo cambiará para desktop -->
         </button>
 
         <aside class="sidebar" id="sidebar">
@@ -50,7 +50,7 @@
                 </button>
             </div>
             <div class="sidebar-user-profile">
-                <div class="user-avatar-initial" id="userAvatarInitial">J</div>
+                <div class="user-avatar-initial" id="userAvatarInitial">U</div>
                 <div class="user-details">
                     <span class="user-name-display" id="sidebarUserDisplay">Usuario</span>
                     <span class="user-role">Rol</span>
@@ -101,29 +101,27 @@
                 <h1 class="content-title">Dashboard Principal</h1>
                 <div class="dashboard-widgets">
                     <div class="widget">
-                        <h3>OEE (Overall Equipment Effectiveness)</h3>
+                        <h3>OEE</h3>
                         <div class="widget-value">84.2%</div>
-                        <div class="widget-comparison">+2.1% vs mes anterior</div>
+                        <div class="widget-comparison">+2.1% vs mes ant.</div>
                     </div>
                     <div class="widget">
-                        <h3>MTBF (Tiempo Medio Entre Fallos)</h3>
+                        <h3>MTBF</h3>
                         <div class="widget-value">168h</div>
-                        <div class="widget-comparison">+12h vs promedio</div>
+                        <div class="widget-comparison">+12h vs prom.</div>
                     </div>
                     <div class="widget">
-                        <h3>Unidades Producidas</h3>
+                        <h3>Unidades Prod.</h3>
                         <div class="widget-value">25,780</div>
                         <div class="widget-comparison">Meta: 28,000</div>
                     </div>
                 </div>
             </div>
-
             <!-- Módulo Producción -->
             <div class="module-content" id="produccionModule">
                 <h1 class="content-title">Producción</h1>
                 <div class="module-description">
-                    <p>Este módulo está enfocado al seguimiento y cumplimiento de la producción, con capacidades para
-                        registros en tiempo real y análisis de eficiencia.</p>
+                    <p>Seguimiento y cumplimiento de producción, registros en tiempo real y análisis de eficiencia.</p>
                 </div>
                 <div class="data-cards-container">
                     <div class="data-card">
@@ -137,17 +135,15 @@
                         <p class="data-subtext">Objetivo: 90%</p>
                     </div>
                     <div class="data-card">
-                        <h4>Unidades Producidas Hoy</h4>
+                        <h4>Unidades Hoy</h4>
                         <p class="data-value">1,250</p>
                         <p class="data-subtext">Turno 1</p>
                     </div>
                 </div>
-                <div class="action-buttons-container">
-                    <button class="action-button"><i class="fas fa-plus-circle"></i> Nueva Orden de Producción</button>
-                    <button class="action-button secondary"><i class="fas fa-tasks"></i> Ver Tareas Pendientes</button>
-                </div>
+                <div class="action-buttons-container"><button class="action-button"><i class="fas fa-plus-circle"></i>
+                        Nueva Orden</button><button class="action-button secondary"><i class="fas fa-tasks"></i> Tareas
+                        Pendientes</button></div>
             </div>
-
             <!-- Módulo de Formularios de Inspección -->
             <div class="module-content" id="formulariosModule">
                 <div class="module-header-content">
@@ -155,45 +151,43 @@
                         <ol class="breadcrumb-content">
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link-main-module"
                                     data-main-module="calidadParentModule">Calidad</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Formularios de Inspección</li>
+                            <li class="breadcrumb-item active" aria-current="page">Formularios</li>
                         </ol>
                     </nav>
                 </div>
                 <h2 class="content-subtitle">Formularios de Inspección</h2>
-                <div class="form-selector">
-                    <select id="formType" name="formType">
-                        <option value="">Seleccione el área a inspeccionar</option>
+                <div class="form-selector"><select id="formType" name="formType">
+                        <option value="">Seleccione área</option>
                         <option value="perfileria">Perfilería</option>
                         <option value="pintura">Pintura</option>
                         <option value="troquelados">Troquelados</option>
                         <option value="felpa">Felpa y Empaque</option>
-                        <option value="vidrio">Vidrio crudo y Templado</option>
+                        <option value="vidrio">Vidrio</option>
                         <option value="despachos">Despachos</option>
-                    </select>
-                </div>
+                    </select></div>
                 <form class="inspection-form" id="inspectionForm">
-                    <div class="form-group"><label for="inspectionDate">Fecha de Inspección:</label><input type="date"
+                    <div class="form-group"><label for="inspectionDate">Fecha Inspección:</label><input type="date"
                             id="inspectionDate" name="inspectionDate" required></div>
                     <div class="form-group"><label for="inspectorName">Inspector:</label><input type="text"
                             id="inspectorName" name="inspectorName" required></div>
-                    <div class="form-group"><label for="productCode">Código del Producto:</label><input type="text"
+                    <div class="form-group"><label for="productCode">Cód. Producto:</label><input type="text"
                             id="productCode" name="productCode" required pattern="^[A-Z0-9]{5,10}$"
-                            title="El código debe tener entre 5 y 10 caracteres alfanuméricos (A-Z, 0-9)."></div>
-                    <div class="form-group"><label for="batchNumber">Número de Lote:</label><input type="text"
-                            id="batchNumber" name="batchNumber" required></div>
+                            title="Código: 5-10 caracteres alfanuméricos (A-Z, 0-9)."></div>
+                    <div class="form-group"><label for="batchNumber">Nº Lote:</label><input type="text" id="batchNumber"
+                            name="batchNumber" required></div>
                     <div class="form-group"><label for="measurementOne">Medida 1 (mm):</label><input type="number"
                             id="measurementOne" name="measurementOne" step="0.01" min="0"></div>
                     <div class="form-group"><label for="measurementTwo">Medida 2 (mm):</label><input type="number"
                             id="measurementTwo" name="measurementTwo" step="0.01" min="0"></div>
                     <div class="form-group"><label for="status">Estado:</label><select id="status" name="status"
                             required>
-                            <option value="">Seleccione un estado</option>
+                            <option value="">Seleccione</option>
                             <option value="aprobado">Aprobado</option>
                             <option value="rechazado">Rechazado</option>
-                            <option value="pendiente">Pendiente de revisión</option>
+                            <option value="pendiente">Pendiente</option>
                         </select></div>
-                    <div class="form-group"><label for="defectType">Tipo de Defecto (si aplica):</label><select
-                            id="defectType" name="defectType">
+                    <div class="form-group"><label for="defectType">Tipo Defecto:</label><select id="defectType"
+                            name="defectType">
                             <option value="">Ninguno</option>
                             <option value="dimensional">Dimensional</option>
                             <option value="visual">Visual</option>
@@ -203,15 +197,12 @@
                     <div class="form-group" style="grid-column: span 2;"><label
                             for="observations">Observaciones:</label><textarea id="observations"
                             name="observations"></textarea></div>
-                    <div class="form-buttons">
-                        <button type="button" id="restoreDraftButton" class="secondary-button">Restaurar
-                            Borrador</button>
-                        <button type="button" class="cancel-button" id="cancelInspectionForm">Cancelar</button>
-                        <button type="submit" class="submit-button">Guardar</button>
-                    </div>
+                    <div class="form-buttons"><button type="button" id="restoreDraftButton"
+                            class="secondary-button">Rest. Borrador</button><button type="button" class="cancel-button"
+                            id="cancelInspectionForm">Cancelar</button><button type="submit"
+                            class="submit-button">Guardar</button></div>
                 </form>
             </div>
-
             <!-- Módulo de Biblioteca de Archivos -->
             <div class="module-content" id="bibliotecaModule">
                 <div class="module-header-content">
@@ -219,7 +210,7 @@
                         <ol class="breadcrumb-content">
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link-main-module"
                                     data-main-module="calidadParentModule">Calidad</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Biblioteca de Archivos</li>
+                            <li class="breadcrumb-item active" aria-current="page">Biblioteca</li>
                         </ol>
                     </nav>
                 </div>
@@ -229,26 +220,26 @@
                             <option value="">Todos</option>
                             <option value="Instructivo">Instructivos</option>
                             <option value="Manual">Manuales</option>
-                            <option value="Ficha">Fichas Técnicas</option>
+                            <option value="Ficha">Fichas</option>
                             <option value="Norma">Normas</option>
                             <option value="Formato">Formatos</option>
                         </select></div>
                     <div class="filter-group search-box"><label for="documentSearch">Buscar:</label><input type="text"
-                            id="documentSearch" placeholder="Nombre del documento..."><i class="fas fa-search"></i>
-                    </div>
-                    <div class="filter-group"><label for="filterDateFrom">Fecha Desde:</label><input type="date"
+                            id="documentSearch" placeholder="Nombre..."><i class="fas fa-search"></i></div>
+                    <div class="filter-group"><label for="filterDateFrom">Desde:</label><input type="date"
                             id="filterDateFrom"></div>
-                    <div class="filter-group"><label for="filterDateTo">Fecha Hasta:</label><input type="date"
+                    <div class="filter-group"><label for="filterDateTo">Hasta:</label><input type="date"
                             id="filterDateTo"></div>
-                    <div class="filter-group"><label for="sortFilesBy">Ordenar por:</label><select id="sortFilesBy">
-                            <option value="name_asc">Nombre (A-Z)</option>
-                            <option value="name_desc">Nombre (Z-A)</option>
-                            <option value="date_new">Fecha (Nuevos)</option>
-                            <option value="date_old">Fecha (Antiguos)</option>
-                            <option value="size_asc">Tamaño (Menor)</option>
-                            <option value="size_desc">Tamaño (Mayor)</option>
+                    <div class="filter-group"><label for="sortFilesBy">Ordenar:</label><select id="sortFilesBy">
+                            <option value="name_asc">Nombre A-Z</option>
+                            <option value="name_desc">Nombre Z-A</option>
+                            <option value="date_new">Recientes</option>
+                            <option value="date_old">Antiguos</option>
+                            <option value="size_asc">Tamaño ↑</option>
+                            <option value="size_desc">Tamaño ↓</option>
                         </select></div>
-                    <button id="applyLibraryFilters" class="submit-button">Aplicar</button>
+                    <button id="applyLibraryFilters" class="submit-button" style="display:none;">Aplicar</button>
+                    <!-- Oculto si se filtra al cambiar -->
                 </div>
                 <table class="documents-table">
                     <thead>
@@ -263,7 +254,6 @@
                     <tbody></tbody>
                 </table>
             </div>
-
             <!-- Módulo de Indicadores de Gestión -->
             <div class="module-content" id="indicadoresModule">
                 <div class="module-header-content">
@@ -271,7 +261,7 @@
                         <ol class="breadcrumb-content">
                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link-main-module"
                                     data-main-module="calidadParentModule">Calidad</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Indicadores de Gestión</li>
+                            <li class="breadcrumb-item active" aria-current="page">Indicadores</li>
                         </ol>
                     </nav>
                 </div>
@@ -281,36 +271,34 @@
                         <option value="">Todas las áreas</option>
                         <option value="perfileria">Perfilería</option>
                     </select>
-                    <label for="kpiStartDate">Desde:</label><input type="date" id="kpiStartDate">
-                    <label for="kpiEndDate">Hasta:</label><input type="date" id="kpiEndDate">
+                    <label for="kpiStartDate">Desde:</label><input type="date" id="kpiStartDate"><label
+                        for="kpiEndDate">Hasta:</label><input type="date" id="kpiEndDate">
                     <button class="submit-button" id="updateKpiBtn">Actualizar</button>
                 </div>
                 <div class="charts-container">
                     <div class="chart-card">
-                        <h3 class="chart-title">Defectos por Área</h3>
+                        <h3 class="chart-title">Defectos/Área</h3>
                         <div class="chart-area"><canvas id="defectsChart"></canvas></div>
                     </div>
                     <div class="chart-card">
-                        <h3 class="chart-title">Tiempos de Inspección</h3>
+                        <h3 class="chart-title">Tiempos Inspección</h3>
                         <div class="chart-area"><canvas id="timeChart"></canvas></div>
                     </div>
                     <div class="chart-card">
-                        <h3 class="chart-title">Aprobados vs Rechazados</h3>
+                        <h3 class="chart-title">Aprob./Rechaz.</h3>
                         <div class="chart-area"><canvas id="approvalChart"></canvas></div>
                     </div>
                     <div class="chart-card">
-                        <h3 class="chart-title">Tendencia de Calidad</h3>
+                        <h3 class="chart-title">Tendencia Calidad</h3>
                         <div class="chart-area"><canvas id="trendChart"></canvas></div>
                     </div>
                 </div>
             </div>
-
             <!-- Módulo Mantenimiento -->
             <div class="module-content" id="mantenimientoModule">
                 <h1 class="content-title">Mantenimiento</h1>
                 <div class="module-description">
-                    <p>Gestión integral de mantenimiento (TPM), solicitudes Help Desk, programación de mantenimientos
-                        preventivos y correctivos.</p>
+                    <p>Gestión TPM, Help Desk, mantenimientos preventivos y correctivos.</p>
                 </div>
                 <div class="data-cards-container">
                     <div class="data-card">
@@ -321,51 +309,45 @@
                     <div class="data-card">
                         <h4>Mantenimientos Prog.</h4>
                         <p class="data-value">8</p>
-                        <p class="data-subtext">Próximas 24h: 2</p>
+                        <p class="data-subtext">Próx. 24h: 2</p>
                     </div>
                     <div class="data-card">
-                        <h4>Disponibilidad Equipo</h4>
+                        <h4>Disponibilidad Eq.</h4>
                         <p class="data-value">98.5%</p>
-                        <p class="data-subtext">Últimos 7 días</p>
+                        <p class="data-subtext">Últ. 7 días</p>
                     </div>
                 </div>
-                <div class="action-buttons-container">
-                    <button class="action-button"><i class="fas fa-ticket-alt"></i> Crear Ticket</button>
-                    <button class="action-button secondary"><i class="fas fa-calendar-alt"></i> Ver Calendario
-                        TPM</button>
-                </div>
+                <div class="action-buttons-container"><button class="action-button"><i class="fas fa-ticket-alt"></i>
+                        Crear Ticket</button><button class="action-button secondary"><i class="fas fa-calendar-alt"></i>
+                        Calendario TPM</button></div>
             </div>
-
             <!-- Módulo Logística -->
             <div class="module-content" id="logisticaModule">
                 <h1 class="content-title">Logística</h1>
                 <div class="module-description">
-                    <p>Seguimiento logístico, recepción de materia prima, gestión de stocks y estado de despachos.</p>
+                    <p>Recepción materia prima, stocks y estado de despachos.</p>
                 </div>
                 <div class="data-cards-container">
                     <div class="data-card">
                         <h4>Recepciones Pend.</h4>
                         <p class="data-value">3</p>
-                        <p class="data-subtext">Aluminio: 2, Vidrio: 1</p>
+                        <p class="data-subtext">Alu: 2, Vid: 1</p>
                     </div>
                     <div class="data-card">
-                        <h4>Stock Aluminio (P01)</h4>
+                        <h4>Stock Alu (P01)</h4>
                         <p class="data-value">75%</p>
-                        <p class="data-subtext">Objetivo: > 50%</p>
+                        <p class="data-subtext">Obj: > 50%</p>
                     </div>
                     <div class="data-card">
-                        <h4>Despachos en Ruta</h4>
+                        <h4>Despachos Ruta</h4>
                         <p class="data-value">6</p>
-                        <p class="data-subtext">2 con posible retraso</p>
+                        <p class="data-subtext">2 con retraso</p>
                     </div>
                 </div>
-                <div class="action-buttons-container">
-                    <button class="action-button"><i class="fas fa-pallet"></i> Registrar Recepción</button>
-                    <button class="action-button secondary"><i class="fas fa-map-marked-alt"></i> Seguimiento
-                        Despachos</button>
-                </div>
+                <div class="action-buttons-container"><button class="action-button"><i class="fas fa-pallet"></i>
+                        Registrar Recepción</button><button class="action-button secondary"><i
+                            class="fas fa-map-marked-alt"></i> Seguimiento</button></div>
             </div>
-
             <!-- Módulo Reportes -->
             <div class="module-content" id="reportesModule">
                 <h1 class="content-title">Reportes</h1>
@@ -373,24 +355,22 @@
                     <p>Generación y visualización de reportes consolidados.</p>
                 </div>
                 <ul class="report-list">
-                    <li><a href="#"><i class="fas fa-file-invoice-dollar"></i> Reporte Costos Producción</a></li>
-                    <li><a href="#"><i class="fas fa-chart-bar"></i> Reporte Defectos Calidad</a></li>
-                    <li><a href="#"><i class="fas fa-tools"></i> Reporte Mantenimiento Preventivo</a></li>
-                    <li><a href="#"><i class="fas fa-boxes"></i> Reporte Rotación Inventario</a></li>
+                    <li><a href="#"><i class="fas fa-file-invoice-dollar"></i> Costos Producción</a></li>
+                    <li><a href="#"><i class="fas fa-chart-bar"></i> Defectos Calidad</a></li>
+                    <li><a href="#"><i class="fas fa-tools"></i> Mantenimiento Preventivo</a></li>
+                    <li><a href="#"><i class="fas fa-boxes"></i> Rotación Inventario</a></li>
                 </ul>
             </div>
-
             <!-- Módulo Configuración -->
             <div class="module-content" id="configuracionModule">
                 <h1 class="content-title">Configuración</h1>
                 <div class="module-description">
-                    <p class="access-restricted-message"><i class="fas fa-lock"></i> Acceso restringido. Solo personal
-                        de desarrollo.</p>
+                    <p class="access-restricted-message"><i class="fas fa-lock"></i> Acceso restringido.</p>
                 </div>
                 <div class="config-options">
                     <h4>Parámetros Generales</h4>
                     <p>Notificaciones, umbrales, etc.</p>
-                    <h4>Gestión de Usuarios (Simulado)</h4>
+                    <h4>Gestión Usuarios</h4>
                     <p>Perfiles y permisos.</p>
                 </div>
             </div>
