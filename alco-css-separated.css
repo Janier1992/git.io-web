@@ -3,37 +3,42 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: #f0f2f5;
+    background-color: #eef0f4;
     color: #333;
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* Variables de colores */
+/* Variables */
 :root {
-    --sidebar-bg: #3f4d67;
-    --sidebar-bg-hover: #4a5a78;
-    --sidebar-text-color: #e0e0e0;
+    --sidebar-bg: #2c3e50;
+    /* Azul oscuro para el sidebar */
+    --sidebar-bg-hover: #34495e;
+    --sidebar-text-color: #ecf0f1;
     --sidebar-text-active: #ffffff;
+    --sidebar-active-bg: #1abc9c;
+    /* Verde azulado para activo */
     --content-bg: #ffffff;
     --content-title-color: #2c3e50;
-    --widget-bg-gradient-start: #6a11cb;
-    --widget-bg-gradient-end: #2575fc;
+    --widget-bg-gradient-start: #8e44ad;
+    /* Morado */
+    --widget-bg-gradient-end: #3498db;
+    /* Azul */
     --widget-text-color: #ffffff;
-
     --original-alco-azul: #004282;
     --original-alco-azul-claro: #0056b3;
     --original-alco-blanco: #ffffff;
     --original-alco-gris-claro: #f0f0f0;
     --original-alco-gris-medio: #e9ecef;
-    --original-alco-gris-oscuro: #a5a7a8;
+    --original-alco-gris-oscuro: #bdc3c7;
+    /* Gris más claro */
 }
 
-/* Estilos para la página de login */
+/* Login (sin cambios significativos, se mantiene como estaba) */
 .login-container {
     display: none;
     height: 100vh;
@@ -73,7 +78,7 @@ body {
     width: 400px;
     max-width: 90%;
     margin: auto;
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -132,7 +137,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* Nueva estructura de la aplicación */
+/* App Container */
 .app-container {
     display: none;
     height: 100vh;
@@ -145,36 +150,35 @@ body {
 
 /* Sidebar */
 .sidebar {
-    width: 260px;
+    width: 250px;
     background-color: var(--sidebar-bg);
     color: var(--sidebar-text-color);
     display: flex;
     flex-direction: column;
-    transition: width 0.3s ease;
+    transition: width 0.3s ease, left 0.3s ease;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
     position: relative;
-    /* Para que el botón de toggle se posicione relativo a este */
+    z-index: 999;
 }
 
 .sidebar-header {
-    padding: 15px;
+    padding: 18px 15px;
     text-align: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    /* Alineado a la izquierda */
 }
 
 .sidebar-logo {
-    height: 35px;
+    height: 30px;
     margin-right: 10px;
 }
 
 .sidebar-title {
-    font-size: 1.3rem;
-    font-weight: bold;
+    font-size: 1.2rem;
+    font-weight: 600;
     color: var(--original-alco-blanco);
     white-space: nowrap;
     overflow: hidden;
@@ -185,19 +189,19 @@ body {
     display: flex;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .user-avatar-initial {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    background-color: var(--original-alco-azul-claro);
+    background-color: var(--sidebar-active-bg);
     color: var(--original-alco-blanco);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
     margin-right: 10px;
     flex-shrink: 0;
@@ -211,7 +215,7 @@ body {
 }
 
 .user-name-display {
-    font-weight: bold;
+    font-weight: 500;
     font-size: 0.9rem;
     color: var(--original-alco-blanco);
 }
@@ -219,7 +223,7 @@ body {
 .user-role {
     font-size: 0.75rem;
     color: var(--sidebar-text-color);
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 .sidebar-nav ul {
@@ -231,12 +235,12 @@ body {
 .sidebar-nav .nav-link {
     display: flex;
     align-items: center;
-    padding: 10px 15px;
+    padding: 10px 20px;
     color: var(--sidebar-text-color);
     text-decoration: none;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, border-left-color 0.2s ease;
     font-size: 0.9rem;
-    border-left: 3px solid transparent;
+    border-left: 4px solid transparent;
     white-space: nowrap;
 }
 
@@ -267,16 +271,17 @@ body {
 }
 
 .sidebar-nav .nav-link.active {
-    background-color: var(--original-alco-azul);
+    background-color: var(--sidebar-active-bg);
     color: var(--sidebar-text-active);
     font-weight: 500;
-    border-left-color: var(--original-alco-azul-claro);
+    border-left-color: #f1c40f;
+    /* Amarillo para activo */
 }
 
 .sidebar-nav .submenu {
     list-style: none;
     padding-left: 0;
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: rgba(0, 0, 0, 0.2);
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
@@ -287,32 +292,32 @@ body {
 }
 
 .sidebar-nav .submenu-link {
-    padding-left: 30px;
+    padding-left: 35px;
     font-size: 0.85rem;
 }
 
-/* Indentación con icono incluido */
 .sidebar-nav .submenu-link i.fas {
     margin-right: 10px;
     font-size: 0.9em;
 }
 
 .sidebar-nav .submenu-link.active {
-    background-color: var(--original-alco-azul-claro);
-    border-left-color: var(--original-alco-blanco);
+    background-color: var(--sidebar-active-bg);
+    border-left-color: #f1c40f;
+    opacity: 0.9;
 }
 
 .sidebar-footer {
     margin-top: auto;
     padding: 10px 15px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .logout-button-sidebar {
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 10px 0;
+    padding: 10px 5px;
     background-color: transparent;
     color: var(--sidebar-text-color);
     border: none;
@@ -337,25 +342,25 @@ body {
 /* Sidebar Toggle Button */
 .sidebar-toggle-btn {
     position: fixed;
-    top: 18px;
-    left: 235px;
-    z-index: 1001;
+    top: 15px;
+    left: 15px;
+    z-index: 1005;
     background-color: var(--sidebar-bg);
     color: var(--sidebar-text-color);
     border: none;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: left 0.3s ease, background-color 0.3s ease;
+    transition: left 0.3s ease, background-color 0.3s ease, opacity 0.3s;
 }
 
 .sidebar-toggle-btn:hover {
-    background-color: var(--original-alco-azul);
+    background-color: var(--sidebar-active-bg);
 }
 
 .sidebar-toggle-btn i {
@@ -373,13 +378,14 @@ body {
     margin-left: auto;
 }
 
+/* Oculto por defecto, se muestra en sidebar colapsado */
 .sidebar-expand-btn:hover {
     color: var(--original-alco-blanco);
 }
 
-/* Sidebar Colapsado */
+/* Sidebar Colapsado (Desktop) */
 .sidebar.collapsed {
-    width: 60px;
+    width: 70px;
 }
 
 .sidebar.collapsed .sidebar-title,
@@ -415,7 +421,7 @@ body {
 
 .sidebar.collapsed .sidebar-nav .nav-link i.fas {
     margin-right: 0;
-    font-size: 1.2em;
+    font-size: 1.3em;
 }
 
 .sidebar.collapsed .sidebar-footer {
@@ -430,10 +436,12 @@ body {
     display: flex;
 }
 
+/* Mostrar botón de expandir dentro del header */
 .app-container.sidebar-collapsed .sidebar-toggle-btn {
-    left: 35px;
+    left: 45px;
 }
 
+/* Posición del toggle cuando sidebar está colapsado */
 .app-container.sidebar-collapsed .sidebar-toggle-btn i {
     transform: rotate(180deg);
 }
@@ -445,12 +453,13 @@ body {
     overflow-y: auto;
     background-color: var(--original-alco-gris-claro);
     transition: margin-left 0.3s ease;
-    /* Para transición suave si sidebar no es fixed */
+    margin-left: 250px;
+    /* Espacio para el sidebar expandido */
 }
 
 .app-container.sidebar-collapsed .content-area {
-    /* Ajuste si el sidebar no es fixed y afecta el flujo */
-    /* margin-left: 60px; */
+    margin-left: 70px;
+    /* Espacio para el sidebar colapsado */
 }
 
 .module-content {
@@ -513,7 +522,7 @@ body {
     font-weight: 500;
 }
 
-/* Widgets Dashboard */
+/* ... (Estilos para widgets, contenido simulado, formularios, biblioteca, indicadores, footer como en la respuesta anterior) ... */
 .dashboard-widgets {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -547,7 +556,6 @@ body {
     opacity: 0.8;
 }
 
-/* Estilos para contenido simulado */
 .module-description {
     margin-bottom: 25px;
     font-size: 1rem;
@@ -674,7 +682,6 @@ body {
     color: var(--original-alco-azul);
 }
 
-/* Formularios, Biblioteca, Indicadores (Estilos ya existentes adaptados al contexto) */
 .form-selector select {
     padding: 10px;
     width: 100%;
@@ -953,118 +960,122 @@ body {
     border-top: 1px solid #eee;
 }
 
-/* Media Queries para responsividad */
+
+/* Media Queries para Responsividad */
 @media (max-width: 768px) {
     .app-container {
         flex-direction: column;
     }
 
-    .sidebar {
-        width: 100%;
-        height: auto;
-        flex-direction: row;
-        align-items: center;
-        padding: 0 10px;
-        overflow-y: hidden;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .sidebar-header {
-        padding: 10px 0;
-        border-bottom: none;
-    }
-
-    .sidebar-user-profile {
-        display: none;
-    }
-
-    .sidebar-nav {
-        display: flex;
-        overflow-x: auto;
-        overflow-y: hidden;
-        white-space: nowrap;
-        flex-grow: 1;
-        margin-left: 10px;
-    }
-
-    .sidebar-nav ul {
-        display: flex;
-    }
-
-    .sidebar-nav .nav-link {
-        padding: 10px 12px;
-        border-left: none;
-        border-bottom: 3px solid transparent;
-    }
-
-    .sidebar-nav .nav-link.active {
-        border-bottom-color: var(--original-alco-azul-claro);
-        border-left: none;
-    }
-
-    .sidebar-nav .nav-link i.fas {
-        margin-right: 5px;
-    }
-
-    .sidebar-nav .nav-item-has-children i.arrow-icon {
-        display: none;
-    }
-
-    .sidebar-nav .submenu {
-        position: absolute;
-        top: 100%;
-        /* Relativo al nav-item padre si este es position:relative */
-        left: 0;
-        z-index: 1000;
-        background-color: var(--sidebar-bg);
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        min-width: 200px;
-        max-height: 0;
-    }
-
-    .nav-item-has-children.open>.submenu {
-        max-height: 300px;
-        padding: 5px 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .sidebar-nav .submenu-link {
-        padding: 10px 20px;
-    }
-
-    .sidebar-footer {
-        display: none;
-    }
+    /* App pasa a columna */
 
     .sidebar-toggle-btn {
+        position: fixed;
+        /* Botón de toggle siempre visible en móvil */
         top: 10px;
-        left: auto;
-        right: 10px;
-        /* Posición del botón de toggle en móvil */
-        background-color: transparent;
-        color: var(--original-alco-azul);
-        box-shadow: none;
+        left: 10px;
+        background-color: var(--original-alco-azul);
+        color: white;
+        opacity: 0.9;
     }
 
     .app-container.sidebar-collapsed .sidebar-toggle-btn {
-        right: 10px;
+        /* Cuando sidebar está colapsado (pero aquí significa oculto en móvil) */
+        /* No necesita cambio de 'left' porque el sidebar se oculta */
     }
 
-    /* Mantenerlo a la derecha */
-    .sidebar.collapsed .sidebar-expand-btn {
-        display: none;
+    .sidebar {
+        position: fixed;
+        left: -260px;
+        /* Oculto por defecto */
+        top: 0;
+        height: 100vh;
+        z-index: 1000;
+        transition: left 0.3s ease-in-out;
+        width: 250px;
+        /* Ancho fijo cuando se abre */
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
     }
 
-    /* Ocultar botón de expandir interno en móvil */
+    .sidebar.open-mobile {
+        /* Clase para mostrar sidebar en móvil */
+        left: 0;
+    }
+
+    .sidebar.collapsed {
+        /* En móvil, la clase 'collapsed' no debe afectar el ancho si está 'open-mobile' */
+        width: 250px;
+        /* Mantener ancho si está abierto */
+    }
+
+    .sidebar.collapsed .sidebar-title,
+    .sidebar.collapsed .user-details,
+    /* No ocultar texto de nav-link si el sidebar está abierto en móvil, incluso si desktop estaría colapsado */
+    .sidebar.open-mobile .nav-link .nav-link-text,
+    .sidebar.open-mobile .logout-button-sidebar .nav-link-text {
+        display: inline-block !important;
+        /* Forzar a mostrar */
+    }
+
+    .sidebar.collapsed .sidebar-nav .nav-link i.arrow-icon {
+        display: inline-block;
+        /* Mostrar flecha si el texto está visible */
+    }
+
+    .sidebar.open-mobile.collapsed .sidebar-nav .nav-link {
+        justify-content: flex-start;
+        /* Alinear a la izquierda, no centrar icono */
+    }
+
+    .sidebar.open-mobile.collapsed .sidebar-nav .nav-link i.fas {
+        margin-right: 12px;
+        /* Restaurar margen */
+        font-size: 1em;
+        /* Restaurar tamaño */
+    }
+
+    .sidebar-expand-btn {
+        display: none !important;
+    }
+
+    /* Ocultar siempre en móvil */
+
     .content-area {
-        padding: 15px;
         margin-left: 0 !important;
-        /* Asegurar que no haya margen en móvil */
+        /* Contenido ocupa todo el ancho */
+        padding: 15px;
+        padding-top: 60px;
+        /* Espacio para el botón de toggle fijo */
     }
 
-    .login-form-container {
-        width: 95%;
-        padding: 20px;
+    .login-header {
+        flex-direction: column;
+        height: auto;
+        gap: 10px;
+        padding: 10px 15px;
+    }
+
+    .login-header .logo {
+        height: 35px;
+    }
+
+    .login-page-title {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    .module-content {
+        padding: 15px;
+    }
+
+    .content-title {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .content-subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
     }
 
     .inspection-form {
@@ -1072,29 +1083,71 @@ body {
     }
 
     .form-buttons {
-        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
     }
 
     .form-buttons button {
-        width: auto;
-        min-width: 120px;
-        margin: 5px;
+        width: 100%;
     }
 
     .library-filters,
     .kpi-filters {
         flex-direction: column;
         align-items: stretch;
+        padding: 10px;
     }
 
     .library-filters .filter-group,
-    .library-filters .submit-button {
+    .kpi-filters>*,
+    .library-filters .submit-button,
+    .kpi-filters .submit-button {
         width: 100%;
         margin-bottom: 10px;
     }
 
     .library-filters .search-box i.fa-search {
-        top: 38px;
-        /* Ajuste para el label arriba en móvil */
+        top: 50%;
+        transform: translateY(-50%);
+        /* Centrar verticalmente en el input */
+        right: 10px;
+        left: auto;
+    }
+
+    .library-filters .search-box input[type="text"] {
+        padding-left: 10px;
+        padding-right: 35px;
+    }
+
+    /* Icono a la derecha */
+    .kpi-filters label {
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .charts-container {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-card {
+        padding: 15px;
+    }
+
+    .dashboard-widgets {
+        grid-template-columns: 1fr;
+    }
+
+    .module-header-content {
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+    }
+
+    .breadcrumb-content {
+        font-size: 0.85rem;
+    }
+
+    .content-footer {
+        padding: 15px;
+        font-size: 0.8rem;
     }
 }
